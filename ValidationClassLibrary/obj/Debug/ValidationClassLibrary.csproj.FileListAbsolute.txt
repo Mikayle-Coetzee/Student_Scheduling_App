@@ -1,0 +1,6 @@
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\ValidationClassLibrary.csproj.AssemblyReference.cache
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\ValidationClassLibrary.csproj.CoreCompileInputs.cache
+C:\Visual Studio Apps\ValidationClassLibrary\bin\Debug\ValidationClassLibrary.dll
+C:\Visual Studio Apps\ValidationClassLibrary\bin\Debug\ValidationClassLibrary.pdb
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\ValidationClassLibrary.dll
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\ValidationClassLibrary.pdb

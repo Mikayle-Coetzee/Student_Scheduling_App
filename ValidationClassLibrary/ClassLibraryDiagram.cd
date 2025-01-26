@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CustomClassLibrary.CalculationClass">
+    <Position X="0.5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CalculationClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomClassLibrary.ImageManipulationClass">
+    <Position X="6.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAEAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ImageManipulationClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomClassLibrary.ValidationClass">
+    <Position X="3.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAABAAAACAAgAAIABAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ValidationClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

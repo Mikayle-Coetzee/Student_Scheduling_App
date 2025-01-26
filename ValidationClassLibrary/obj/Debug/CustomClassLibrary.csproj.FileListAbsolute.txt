@@ -1,0 +1,8 @@
+C:\Visual Studio Apps\ValidationClassLibrary\bin\Debug\ValidationClassLibrary.dll
+C:\Visual Studio Apps\ValidationClassLibrary\bin\Debug\ValidationClassLibrary.pdb
+C:\Visual Studio Apps\ValidationClassLibrary\bin\Debug\PresentationFramework.dll
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\CustomClassLibrary.csproj.AssemblyReference.cache
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\CustomClassLibrary.csproj.CoreCompileInputs.cache
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\ValidationClassLibrary.dll
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\ValidationClassLibrary.pdb
+C:\Visual Studio Apps\ValidationClassLibrary\obj\Debug\CustomCl.7695E069.Up2Date
