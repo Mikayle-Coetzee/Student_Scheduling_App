@@ -1,0 +1,98 @@
+﻿<!--Documentation Header
+    File: ColorPalette.xaml
+    Author: Mikayle Coetzee (ST10023767)
+    Course: PROG6212 POE 2023
+    Part: 1
+    Description: This XAML resource dictionary defines various color, border, font, icon, panel, and button 
+                 styles for the application's user interface -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Background Colors -->
+    <!--Border Background Colors-->
+    <Color x:Key="borderBackgroundColorDark">#58808f</Color>
+    <Color x:Key="borderBackgroundColorLight">#ceffee</Color>
+
+    <!--Grid Background Colors-->
+    <SolidColorBrush x:Key="gridBackgroundColorDark">#58808f</SolidColorBrush>
+    <SolidColorBrush x:Key="gridBackgroundColorLight">#ceffee</SolidColorBrush>
+    <Color x:Key="BackgroundColorLight">#ceffee</Color>
+    <Color x:Key="BackgroundColorDark">#58808f</Color>
+
+
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Border Colors -->
+    <!--Window Border Colors-->
+    <Color x:Key="winBorderBrushNeon">#FF01FFFF</Color>
+    <Color x:Key="winBorderBrushDark">#58808f</Color>
+
+    <!--Border Colors-->
+    <SolidColorBrush x:Key="borderBrushNeon">#FF01FFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="borderBrushDark">#58808f</SolidColorBrush>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Icon Colors -->
+    <!--Icon Colors-->
+    <SolidColorBrush x:Key="iconColorDark" Color="#FF3B5B64 "/>
+    <SolidColorBrush x:Key="iconColorLight" Color="#FFE6FCF4"/>
+
+    <SolidColorBrush x:Key="color1"  Color="#F23CA6"/>
+    <SolidColorBrush x:Key="color2"  Color="#FF0B00FF"/>
+    <SolidColorBrush x:Key="color3"  Color="#4BFF36"/>
+    <SolidColorBrush x:Key="color4"  Color="#F5D300"/>
+    <SolidColorBrush x:Key="color5"  Color="#02FEE4"/>
+    <SolidColorBrush x:Key="color6"  Color="#FF3A06"/>
+    <SolidColorBrush x:Key="color7"  Color="#F500EB"/>
+    <SolidColorBrush x:Key="color8"  Color="#78A3FC"/>
+    <SolidColorBrush x:Key="color9"  Color="#FC5E31"/>
+    <SolidColorBrush x:Key="color10" Color="#FDC7D7"/>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Font Colors -->
+    <!--Title Colors-->
+    <SolidColorBrush x:Key="titleColorDark" Color="#1b343c"/>
+    <SolidColorBrush x:Key="titleColorLight" Color="#FFE6FCF4 "/>
+
+    <!--Plain text Colors-->
+    <SolidColorBrush x:Key="plainTextColorDark" Color="#FF3B5B64 "/>
+    <SolidColorBrush x:Key="plainTextColorLight" Color="#FFE6FCF4"/>
+
+    <!--Button text Colors-->
+    <SolidColorBrush x:Key="btnTextColorDark" Color= "#396d7c"/>
+    <SolidColorBrush x:Key="btnTextColorLight" Color="#FFE6FCF4"/>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Panel Colors -->
+    <!--Panel Colors-->
+    <SolidColorBrush x:Key="panelColor" Color="#ceffee"/>
+    <SolidColorBrush x:Key="panelOverColor" Color="#93c6cc"/>
+    <SolidColorBrush x:Key="panelActiveColor" Color="#58808f"/>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Button Colors -->
+    <!--Button Background Colors-->
+    <SolidColorBrush x:Key="btnBackgroundColorDark" Color="#58808f"/>
+    <SolidColorBrush x:Key="btnBackgroundColorLight" Color="#ceffee "/>
+
+    <SolidColorBrush x:Key="btnTriggerOverColorDark" Color="#274c56"/>
+    <SolidColorBrush x:Key="btnTriggerOverColorLight" Color="#afc4ca "/>
+
+    <SolidColorBrush x:Key="TriggerOverColor"   Color="#FF0B00FF"/>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+</ResourceDictionary>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->

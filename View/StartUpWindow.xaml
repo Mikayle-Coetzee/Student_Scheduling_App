@@ -1,0 +1,144 @@
+﻿<Window x:Class="_10023767_P2.View.StartUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_10023767_P2.View" 
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:viewModel="clr-namespace:_10023767_P2.ViewModel" 
+        xmlns:customcontrols="clr-namespace:_10023767_P2.Controls"
+        mc:Ignorable="d"
+        Title="StartUpWindow" Height="500" Width="850"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </Window.Resources>
+
+    <Window.Visibility>
+        <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
+    </Window.Visibility>
+
+    <Border>
+        <Border BorderThickness="2" Opacity="0.95">
+
+            <!--#region Border Colors -->
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource winBorderBrushNeon}" />
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource borderBackgroundColorLight}" />
+            </Border.Background>
+            <!--#endregion-->
+
+            <Grid>
+
+                <!--#region Grid Column and Row Definitions -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <!--#region Left Side for Sign Up -->
+                <Grid Grid.Column="0"  Background="{DynamicResource gridBackgroundColorDark}">
+                    <Label Content="Sign Up" Margin="-3,98,0,0" 
+                           Style="{DynamicResource TitleLabelStyleLight}"/>
+                    <Label Content="Enter your personal info and"  Margin="-3,167,0,0" 
+                           Style="{DynamicResource PlainLabelStyleLight}"/>
+                    <Label Content="create a new account to"  Margin="0,198,0,0" 
+                           Style="{DynamicResource PlainLabelStyleLight}"/>
+                    <Label Content="use the application" Margin="0,231,0,0" 
+                           Style="{DynamicResource PlainLabelStyleLight}"/>
+
+                    <Button x:Name="btnSignUp"
+                            Height="178" 
+                            Margin="0,278,0,0" 
+                            ToolTip="Sign up" 
+                            Style ="{DynamicResource MainWindowButtonLight}" Click="btnSignUp_Click_1">
+
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="AddressBook" 
+                                          Style ="{DynamicResource iconInButtonDark}"
+                                          Height="20" 
+                                          Width="20"/>
+
+                            <TextBlock Text=" Sign Up" 
+                                       Style="{DynamicResource btnTextBlockStyleDark}"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Right Side for Sign In -->
+                <Grid Grid.Column="1">
+                    <Label Content="Sign In" Margin="0,95,0,0" 
+                           Style="{DynamicResource TitleLabelStyleDark}" />
+                    <Label Content="Use your login details" Margin="0,143,0,0" 
+                           Style="{DynamicResource PlainLabelStyleDark}"/>
+
+                    <TextBox x:Name="tbxUser" 
+                             Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="0,202,0,0" 
+                             ToolTip="Enter your registered username"
+                             AutomationProperties.HelpText="Username" 
+                             Style="{DynamicResource TextBoxStyleDark}"/>
+
+                    <customcontrols:BindablePasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Margin="0,247,0,0" HorizontalAlignment="Center" Width="270" Height="30" VerticalAlignment="Top"/>
+
+                    <TextBlock Text="{Binding ErrorMessage}"
+                           Foreground="#D7596D"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat"                             
+                           Margin="129,278,130,182"
+                           TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+
+                    <Button x:Name="btnLogIn"
+                            Command="{Binding LoginCommand}" 
+                            Margin="119,278,120,24" 
+                            ToolTip="Sign in" 
+                            Style="{DynamicResource MainWindowButtonDark}">
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text=" Sign In " 
+                                       Style="{DynamicResource btnTextBlockStyleLight}"/>
+
+                            <fa:IconImage Icon="SignIn" 
+                                          Style ="{DynamicResource iconInIconButtonLight}"
+                                          Height="20"
+                                          Width="20"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Sign Up Frame -->
+                <Frame x:Name="SignUpFrame"
+                       NavigationUIVisibility="Hidden" 
+                       Grid.ColumnSpan="2"/>
+                <!--#endregion-->
+
+            </Grid>
+        </Border>
+    </Border>
+</Window>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->

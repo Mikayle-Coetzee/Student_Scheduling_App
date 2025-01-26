@@ -1,0 +1,216 @@
+﻿<!--Documentation Header
+    File: AddModulePageView.xaml
+    Author: Mikayle Coetzee (ST10023767)
+    Course: PROG6212 POE 2023
+    Part: 1
+    Description: This will allow users to add modules -->
+    
+<UserControl x:Class="_10023767_P2.View.AddModulePageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_10023767_P2.View"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!--#region Grid Row Definitions -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Grid Row 0, Header Bar -->
+        <Grid Grid.Row="0">
+            <Border
+                Background="{DynamicResource gridBackgroundColorLight}"
+                CornerRadius="10" 
+                Margin="0,0,0,10"
+                BorderBrush="{DynamicResource borderBrushDark}" 
+                BorderThickness="1">
+                <Button x:Name="btnHelp"
+                                Style="{DynamicResource PlainButtonDark}" 
+                                 Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="54" Click="btnHelp_Click">
+                    <StackPanel Orientation="Horizontal" Height="18" >
+                        <fa:IconImage Icon="CircleQuestion"
+                                      Style="{DynamicResource iconInButtonDark}"
+                                      Height="18" Width="20"/>
+                        <TextBlock Text=" Help" 
+                                   Style="{DynamicResource btnTextBlockStyleDark}"/>
+                    </StackPanel>
+                </Button>
+            </Border>
+        </Grid>
+        <!--#endregion-->
+
+        <Border Grid.Row="1"
+                Background="{DynamicResource gridBackgroundColorLight}"
+                CornerRadius="10" 
+                Padding="10" BorderBrush="{DynamicResource borderBrushDark}" 
+                BorderThickness="1">
+
+            <!--#region Module Data Input Fields and Buttons -->
+            <Grid Height="309" VerticalAlignment="Top" HorizontalAlignment="Left" Width="780" ScrollViewer.VerticalScrollBarVisibility="Disabled"  >
+                <Label x:Name="lblModuleCode"
+                    Content="Module code: "
+                      Style="{DynamicResource GuidanceLabelStyleDark}" 
+                       Margin="0,46,0,0"/>
+                <TextBox x:Name="tbxModuleCode" 
+                         ToolTip="Enter the module code" 
+                        Margin="144,46,0,0" 
+                        Style="{StaticResource TextBoxStyleDark}" HorizontalAlignment="Left"/>
+                <Label x:Name="lblModuleName" 
+                       Content="Module name:"
+                       Style="{DynamicResource GuidanceLabelStyleDark}"
+                       Margin="0,88,0,0"/>
+                <TextBox x:Name="tbxModuleName"  
+                          ToolTip="Enter the module name" 
+                         Margin="144,88,0,0" 
+                         Style="{StaticResource TextBoxStyleDark}" HorizontalAlignment="Left"/>
+                <Label x:Name="lblCredits"
+                       Content="Credits:" 
+                       Style="{DynamicResource GuidanceLabelStyleDark}" Margin="0,131,0,0"/>
+                <TextBox x:Name="tbxCredits" 
+                         Margin="144,131,0,0"
+                         ToolTip="Enter the number of credits for that module" 
+                         Style="{StaticResource TextBoxStyleDark}" HorizontalAlignment="Left"/>
+                <Label x:Name="lblClassHrsPerWeek"
+                       Content="Class hours /week:"
+                       Style="{DynamicResource GuidanceLabelStyleDark}"
+                       Margin="0,174,0,0"/>
+                <TextBox x:Name="tbxClassHrsPerWeek"
+                         Margin="144,174,0,0"
+                          ToolTip="Enter the number of class hours for that module per week" 
+                         Style="{StaticResource TextBoxStyleDark}" HorizontalAlignment="Left" Width="60"/>
+                <Label x:Name="lblSemesterName"
+                    Content="Semester name: "
+                    Style="{DynamicResource GuidanceLabelStyleDark}"/>
+                <ComboBox x:Name="cbxSemesterName"
+                           ToolTip="Select a semester to add a module to"
+                    Margin="144,1,0,0" 
+                          Style="{DynamicResource ComboBoxFlatStyle}"
+                          Background="{x:Null}"
+                          BorderBrush="{DynamicResource borderBrushDark}"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Width="270" 
+                          Height="28" 
+                          SelectedIndex="0"
+                          SelectionChanged="cbxSemesterName_SelectionChanged" ></ComboBox>
+
+                <Button x:Name="btnSave" 
+                         Margin="135,216,0,0" 
+                        Style="{StaticResource PlainButtonDark}" 
+                        ToolTip="Add a module" 
+                HorizontalAlignment="Left"
+                        HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center" 
+                        Click="btnSave_Click" Height="31" 
+                        RenderTransformOrigin="0.5,0.5" Width="110">
+                    <StackPanel Orientation="Horizontal" Height="18" >
+                        <fa:IconImage Icon="Check"
+                                      Style="{StaticResource iconInButtonDark}"
+                                      Height="18" Width="20"/>
+                        <TextBlock Text=" Add Module" 
+                                   Style="{StaticResource btnTextBlockStyleDark}"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="btnCancel" 
+                        Margin="359,216,0,0" 
+                        Style="{StaticResource PlainButtonDark}"
+                        HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center" 
+                        Click="btnCancel_Click" Height="31" 
+                        ToolTip="Clear all controls" 
+                        RenderTransformOrigin="0.5,0.5" Width="54" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Height="18" >
+                        <TextBlock Text="Clear " 
+                                   Style="{StaticResource btnTextBlockStyleDark}"/>
+                        <fa:IconImage Icon="Cancel"
+                                      Style="{StaticResource iconInButtonDark}"
+                                      Height="18" Width="20"/>
+
+                    </StackPanel>
+                </Button>
+                <CheckBox x:Name="cbAddMinutes" ToolTip="Check if you would like to add minutes"
+                  Content="Add minutes" Margin="315,180,0,0" Style="{DynamicResource OptionCheckBoxStyle}" Checked="cbAddMinutes_Checked" Unchecked="cbAddMinutes_Unchecked"/>
+                <ComboBox x:Name="cbxMinutes" Style="{StaticResource ComboBoxFlatStyle}" 
+                          HorizontalAlignment="Left" Margin="220,173,0,0" 
+            VerticalAlignment="Top" Width="66" Height="28" Visibility="Collapsed"
+            ToolTip="Select minutes worked on the module on that specific day"/>
+                <Label x:Name="lblMinutes" Content=":" Visibility="Collapsed"
+            Style="{DynamicResource GuidanceLabelStyleDark}" Margin="206,173,0,0"/>
+
+
+            </Grid>
+            <!--#endregion-->
+
+        </Border>
+
+
+        <!--#region Data Output -->
+        <Label x:Name="lblList"
+                    Content="Select semester name to view: "
+                    Style="{DynamicResource GuidanceLabelStyleDark}" 
+               Margin="0,13,17,0" 
+               HorizontalAlignment="Right"
+               Grid.Row="1" Width="220"/>
+
+        <ListBox x:Name="lstSemester" 
+                 DisplayMemberPath="SemesterName" 
+                 Margin="0,55,15,15" Width="215" 
+                 Grid.Row="1" 
+                 ToolTip="Select a semester out of the list to view." 
+                 HorizontalAlignment="Right"
+                 Background="{DynamicResource gridBackgroundColorLight}" 
+                 BorderBrush="{DynamicResource borderBrushDark}"
+                 Foreground="{DynamicResource plainTextColorDark}"
+                 FontSize="14" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="lstSemester_SelectionChanged" />
+
+        <DataGrid x:Name="dataGridModules" Margin="15,340,250,15" Grid.Row="1" Style="{DynamicResource DataGridStyle}" 
+          HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ItemsSource="{Binding ModuleList, Mode=OneWay}" 
+          AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <!-- Module Code Column -->
+                <DataGridTextColumn Header="Module Code" Width="*" Binding="{Binding Code}" MinWidth="90">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridHeaderStyle}" />
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <!-- Module Name Column -->
+                <DataGridTextColumn Header="Module Name" Width="*" Binding="{Binding Name}" MinWidth="90">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridHeaderStyle}" />
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <!-- Class Hours per week Column -->
+                <DataGridTextColumn Header="Class Hours per week" Width="*" Binding="{Binding FormattedClassHours}" MinWidth="150">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridHeaderStyle}" />
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+
+                <!-- Self study hrs Column -->
+                <DataGridTextColumn Header="Self study hours" Width="*" Binding="{Binding FormattedSelfStudyTime}" MinWidth="115">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridHeaderStyle}" />
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <!-- Credits Column -->
+                <DataGridTextColumn Header="Credits" Width="auto" Binding="{Binding NumOfCredits}" MinWidth="60">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource DataGridHeaderStyle}" />
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--#endregion-->
+
+    </Grid>
+</UserControl>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->

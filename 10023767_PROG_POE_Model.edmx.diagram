@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e88403f8fd304c8c93a969d27456df30" Name="Diagram1">
+        <EntityTypeShape EntityType="PROG_POE_DatabaseModel.Module" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROG_POE_DatabaseModel.SelfStudyHour" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROG_POE_DatabaseModel.Semester" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROG_POE_DatabaseModel.Student" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROG_POE_DatabaseModel.Study" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="PROG_POE_DatabaseModel.FK__SelfStudy__Modul__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="PROG_POE_DatabaseModel.FK_Module_Semester" ManuallyRouted="false" />
+        <AssociationConnector Association="PROG_POE_DatabaseModel.FK_Study_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="PROG_POE_DatabaseModel.FK__Semesters__Stude__38996AB5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

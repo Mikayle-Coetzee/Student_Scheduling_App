@@ -1,0 +1,312 @@
+﻿<Window x:Class="_10023767_P2.View.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_10023767_P2.View"
+        xmlns:viewModel="clr-namespace:_10023767_P2.ViewModel" 
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:customcontrols="clr-namespace:_10023767_P2.Controls"
+        mc:Ignorable="d"
+        Title="SemesterFlow" Height="700" d:Width="1300"
+        WindowStartupLocation="CenterScreen" 
+        UseLayoutRounding="False"
+        MinHeight="500" MinWidth="1000">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type viewModel:SemesterViewModel}">
+            <local:AddSemesterPageView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:ModuleViewModel}">
+            <local:AddModulePageView/>
+        </DataTemplate>
+
+    </Window.Resources>
+
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="2">
+
+            <!--#region Border Color -->
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource winBorderBrushNeon}"/>
+            </Border.BorderBrush>
+            <!--#endregion-->
+
+            <Grid>
+                <!--#region Grid Column Definitions -->
+                <Grid.ColumnDefinitions>
+                    <!--Navigation menu-->
+                    <ColumnDefinition Width="Auto"/>
+                    <!--Content section-->
+                    <ColumnDefinition Width="1048*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--#endregion-->
+
+                <!-- Navigation Menu -->
+                <Grid x:Name="sidebarGrid" Grid.Column="0" Width="250" MouseEnter="sidebarGrid_MouseEnter" >
+
+                    <!--#region Grid Color -->
+                    <Grid.Background>
+                        <SolidColorBrush Color="{DynamicResource BackgroundColorLight}"/>
+                    </Grid.Background>
+                    <!--#endregion-->
+
+                    <!-- Scroll Viewer -->
+                    <ScrollViewer x:Name="scroleViewer" VerticalScrollBarVisibility="Hidden">
+
+                        <!-- Side Bar Stack Panel-->
+                        <StackPanel x:Name="spSideBar" >
+
+                            <!--#region Sidebar Header -->
+                            <StackPanel Orientation="Horizontal"
+                                Height="35"
+                                Margin="15,17,0,18">
+                                <TextBlock Text="SEMESTER FLOW"
+                                   Foreground="{StaticResource titleColorDark}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,0,0"/>
+                                <Button x:Name="btnCloseSideBar"
+                                Style="{StaticResource iconButtonDark}" 
+                                        ToolTip="Close side menu bar" 
+                                    Tag="{StaticResource iconButtonDark}" Margin="20,0,0,0" Click="btnCloseSideBar_Click" Width="39">
+                                    <fa:IconImage x:Name="iCloseBar" Icon="AngleDoubleLeft"
+                                              Style="{StaticResource iconInButtonDark}"
+                                                  Height="20" Width="20"/>
+                                </Button>
+                            </StackPanel>
+                            <!--#endregion-->
+
+                            <!--#region Sidebar Buttons -->
+                            <RadioButton x:Name="rbAddSemester"
+                                         ToolTip="Add semester page; Add as many semesters as you want!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color1}"
+                                 IsChecked="True"
+                                 Command="{Binding ShowSemesterViewCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage x:Name="iAddSemester" Icon="PlusCircle" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock x:Name="tbAddSemester" Text="Add Semester" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+
+                            <RadioButton x:Name="rbAddModule"
+                                         ToolTip="Add module page; Add modules for a spesific semester!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color3}"
+                                 Command="{Binding ShowModuleViewCommand}" 
+                                         Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage x:Name="iAddModule" Icon="Book" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock x:Name="tbAddModule" Text="Add Module" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                            <RadioButton x:Name="rbEditModule"
+                                         ToolTip="Edit page; Edit semesters or modules!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color4}"
+                                 IsChecked="False"
+                                 Command="{Binding ShowSemesterViewCommand}"
+                                         Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage  x:Name="iEditModule"  Icon="Edit" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock  x:Name="tbEditModule" Text="Edit" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+
+                            <RadioButton x:Name="rbDelete"
+                                         ToolTip="Delete page; Delete semesters or modules!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color5}"
+                                 IsChecked="False"
+                                 Command="{Binding ShowSemesterViewCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage x:Name="iDeleteModule" Icon="Remove" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock x:Name="tbDeleteModule" Text="Delete" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+
+                            <RadioButton x:Name="rbProgress"
+                                         ToolTip="Progress page; View your progress!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color7}"
+                                 IsChecked="False"
+                                 Command="{Binding ShowSemesterViewCommand}" 
+                                         Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage x:Name="iProgress"  Icon="Hourglass1" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock x:Name="tbProgress" Text="Progress" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+
+                            <RadioButton x:Name="rbCalendar"
+                                         ToolTip="Study page; Log your study progress!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color8}"
+                                 IsChecked="False"
+                                 Command="{Binding ShowSemesterViewCommand}" 
+                                         Visibility="Collapsed">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage x:Name="iCalendar" Icon="CalendarDay" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock x:Name="tbCalendar" Text="Study" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                            <RadioButton x:Name="rbMusic"
+                                         ToolTip="Music page; You can play music while studying!" 
+                            Style="{StaticResource sidebarButton}"
+                                 Tag="{StaticResource color2}"
+                                 IsChecked="False"
+                                 Command="{Binding ShowSemesterViewCommand}" >
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage x:Name="iMusic" Icon="Music" Style="{StaticResource sidebarButtonIcon}"/>
+                                    <TextBlock x:Name="tbMusic" Text="Music" Style="{StaticResource sidebarButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+                            <!--#endregion-->
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <!-- Content section -->
+                <Border x:Name="border" Grid.Column="1" Grid.ColumnSpan="2"
+                        BorderBrush="{DynamicResource borderBrushDark}" BorderThickness="1,0,0,0">
+
+                    <!--#region Border Color -->
+                    <Border.Background>
+                        <SolidColorBrush Color="{DynamicResource BackgroundColorDark}"/>
+                    </Border.Background>
+                    <!--#endregion-->
+
+                    <Grid x:Name="grdContent">
+
+                        <!--#region Grid Row Definitions -->
+                        <Grid.RowDefinitions>
+                            <!--Header-->
+                            <RowDefinition Height="70"/>
+                            <!--Usercontrol section-->
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+
+                        <!--#region Header -->
+                        <StackPanel
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center" Margin="0,0,243,0">
+                            <fa:IconImage x:Name="selectedIcon"
+                                Icon="{Binding Icon}"
+                                          Height ="20"
+                                          Width="20"
+                                          Foreground="{DynamicResource iconColorLight}"
+                                          Margin ="30,0,10,0"/>
+                            <TextBlock x:Name="tbSelectedName"
+                                Text="{Binding Caption}"
+                                       Foreground="{DynamicResource titleColorLight}"
+                                       FontSize="16"
+                                       FontFamily="montserrat"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center" Width="742"/>
+                        </StackPanel>
+
+                        <StackPanel
+                                Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                VerticalAlignment ="Center"
+                                Margin ="0,0,21,0">
+                            <Button x:Name="btnSignOut"
+                                Style="{StaticResource iconButtonLight}"
+                                    ToolTip="Sign Out" 
+                                    Tag="{StaticResource color1}" Click="btnSignOut_Click">
+                                <fa:IconImage Icon="PowerOff"
+                                              Style="{StaticResource iconInIconButtonLight}"/>
+                            </Button>
+                            <TextBlock x:Name="tbUsername"
+                                       ToolTip="Signed in username" 
+                                Text="{Binding CurrentUserAccount.DisplayName}"
+                                       Foreground="{DynamicResource plainTextColorLight}"
+                                       FontSize="12"
+                                       FontFamily="montserrat"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"
+                                       Margin="5,0,0,0"/>
+
+                            <Ellipse Height="35"
+                                     Width="35"
+                                     Stroke="{DynamicResource borderBrushNeon}"
+                                     StrokeThickness="2"
+                                     ToolTip="Signed in user profile" 
+                                     Margin="10,0,10,0"
+                                     >
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="iUserProfile" Stretch="UniformToFill" ImageSource="{Binding CurrentUserAccount.ProfilePicture}" />
+                                </Ellipse.Fill>
+
+
+                            </Ellipse>
+
+                            <Button x:Name="btnRefresh" Style="{StaticResource iconButtonLight}"
+                                    Tag="{StaticResource color1}" Click="btnRefresh_Click" ToolTip="Refresh"  >
+                                <fa:IconImage Icon="Refresh"
+                                              Style="{StaticResource iconInIconButtonLight}"
+                                             />
+                            </Button>
+
+                            <Button x:Name ="btnSettings"
+                                Style="{StaticResource iconButtonLight}"
+                                    ToolTip="Settings" 
+                                    Tag="{StaticResource color1}">
+                                <fa:IconImage x:Name="iSettings" Icon="Gear"
+                                              Style="{StaticResource iconInIconButtonLight}"/>
+                            </Button>
+
+                            <Button x:Name="btnNotification"
+                                Style="{StaticResource iconButtonLight}"
+                                    ToolTip="Notifications" 
+                                    Tag="{StaticResource color1}" Click="btnNotification_Click">
+                                <fa:IconImage x:Name="iBell" Icon="Bell"
+                                              Style="{StaticResource iconInIconButtonLight}" Height="18" Width="24"/>
+                            </Button>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Usercontrol section -->
+                        <Grid Grid.Row="1" >
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/Images/18432.jpg"/>
+                            </Grid.Background>
+                            <Frame x:Name="MainFrame" 
+                                   Content="{Binding CurrentChildView}"
+                               NavigationUIVisibility="Hidden" 
+                               Grid.Row="1"
+                               Margin="25">
+                            </Frame>
+                        </Grid>
+                        <!--#endregion-->
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->

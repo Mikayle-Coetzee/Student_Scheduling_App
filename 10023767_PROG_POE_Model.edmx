@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PROG_POE_DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassHrsPerWeek_Hours" Type="int" />
+          <Property Name="ClassHrsPerWeek_Minutes" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="NumOfCredits" Type="int" />
+          <Property Name="FormattedSelfStudyTime" Type="nvarchar(max)" />
+          <Property Name="FormattedClassHours" Type="nvarchar" MaxLength="50" />
+          <Property Name="SemesterID" Type="int" />
+        </EntityType>
+        <EntityType Name="SelfStudyHours">
+          <Key>
+            <PropertyRef Name="SelfStudyID" />
+          </Key>
+          <Property Name="SelfStudyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeekNumber" Type="int" />
+          <Property Name="Hours" Type="int" />
+          <Property Name="Minutes" Type="int" />
+          <Property Name="ModuleID" Type="int" />
+        </EntityType>
+        <EntityType Name="Semesters">
+          <Key>
+            <PropertyRef Name="SemesterID" />
+          </Key>
+          <Property Name="SemesterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="20" />
+          <Property Name="NumOfWeeks" Type="int" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="StudentID" Type="int" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" />
+          <Property Name="StudentNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Study">
+          <Key>
+            <PropertyRef Name="StudyID" />
+          </Key>
+          <Property Name="StudyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DayWorked" Type="date" />
+          <Property Name="WeekWorked" Type="int" />
+          <Property Name="TimeWorked_Hours" Type="int" />
+          <Property Name="TimeWorked_Minutes" Type="int" />
+          <Property Name="ModuleID" Type="int" />
+        </EntityType>
+        <Association Name="FK__SelfStudy__Modul__412EB0B6">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="SelfStudyHours" Type="Self.SelfStudyHours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="SelfStudyHours">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Semesters__Stude__38996AB5">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Semesters">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Module_Semester">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="0..1" />
+          <End Role="Modules" Type="Self.Modules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="SemesterID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="SemesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Study_Module">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="Study" Type="Self.Study" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Study">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PROG_POE_DatabaseModelStoreContainer">
+          <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SelfStudyHours" EntityType="Self.SelfStudyHours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semesters" EntityType="Self.Semesters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Study" EntityType="Self.Study" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__SelfStudy__Modul__412EB0B6" Association="Self.FK__SelfStudy__Modul__412EB0B6">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="SelfStudyHours" EntitySet="SelfStudyHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Semesters__Stude__38996AB5" Association="Self.FK__Semesters__Stude__38996AB5">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Semesters" EntitySet="Semesters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module_Semester" Association="Self.FK_Module_Semester">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Study_Module" Association="Self.FK_Study_Module">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Study" EntitySet="Study" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PROG_POE_DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassHrsPerWeek_Hours" Type="Int32" />
+          <Property Name="ClassHrsPerWeek_Minutes" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NumOfCredits" Type="Int32" />
+          <Property Name="FormattedSelfStudyTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormattedClassHours" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SemesterID" Type="Int32" />
+          <NavigationProperty Name="SelfStudyHours" Relationship="Self.FK__SelfStudy__Modul__412EB0B6" FromRole="Modules" ToRole="SelfStudyHours" />
+          <NavigationProperty Name="Semester" Relationship="Self.FK_Module_Semester" FromRole="Modules" ToRole="Semesters" />
+          <NavigationProperty Name="Studies" Relationship="Self.FK_Study_Module" FromRole="Modules" ToRole="Study" />
+        </EntityType>
+        <EntityType Name="SelfStudyHour">
+          <Key>
+            <PropertyRef Name="SelfStudyID" />
+          </Key>
+          <Property Name="SelfStudyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeekNumber" Type="Int32" />
+          <Property Name="Hours" Type="Int32" />
+          <Property Name="Minutes" Type="Int32" />
+          <Property Name="ModuleID" Type="Int32" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__SelfStudy__Modul__412EB0B6" FromRole="SelfStudyHours" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="SemesterID" />
+          </Key>
+          <Property Name="SemesterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SemesterName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NumOfWeeks" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="StudentID" Type="Int32" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_Module_Semester" FromRole="Semesters" ToRole="Modules" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Semesters__Stude__38996AB5" FromRole="Semesters" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StudentNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Semesters" Relationship="Self.FK__Semesters__Stude__38996AB5" FromRole="Students" ToRole="Semesters" />
+        </EntityType>
+        <EntityType Name="Study">
+          <Key>
+            <PropertyRef Name="StudyID" />
+          </Key>
+          <Property Name="StudyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DayWorked" Type="DateTime" Precision="0" />
+          <Property Name="WeekWorked" Type="Int32" />
+          <Property Name="TimeWorked_Hours" Type="Int32" />
+          <Property Name="TimeWorked_Minutes" Type="Int32" />
+          <Property Name="ModuleID" Type="Int32" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_Study_Module" FromRole="Study" ToRole="Modules" />
+        </EntityType>
+        <Association Name="FK__SelfStudy__Modul__412EB0B6">
+          <End Role="Modules" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="SelfStudyHours" Type="Self.SelfStudyHour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="SelfStudyHours">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Module_Semester">
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="0..1" />
+          <End Role="Modules" Type="Self.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="SemesterID" />
+            </Principal>
+            <Dependent Role="Modules">
+              <PropertyRef Name="SemesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Study_Module">
+          <End Role="Modules" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Study" Type="Self.Study" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Study">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Semesters__Stude__38996AB5">
+          <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Semesters" Type="Self.Semester" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Semesters">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Modules" EntityType="Self.Module" />
+          <EntitySet Name="SelfStudyHours" EntityType="Self.SelfStudyHour" />
+          <EntitySet Name="Semesters" EntityType="Self.Semester" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Studies" EntityType="Self.Study" />
+          <AssociationSet Name="FK__SelfStudy__Modul__412EB0B6" Association="Self.FK__SelfStudy__Modul__412EB0B6">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="SelfStudyHours" EntitySet="SelfStudyHours" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module_Semester" Association="Self.FK_Module_Semester">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="Modules" EntitySet="Modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Study_Module" Association="Self.FK_Study_Module">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Study" EntitySet="Studies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Semesters__Stude__38996AB5" Association="Self.FK__Semesters__Stude__38996AB5">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Semesters" EntitySet="Semesters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PROG_POE_DatabaseModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="PROG_POE_DatabaseModel.Module">
+              <MappingFragment StoreEntitySet="Modules">
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ClassHrsPerWeek_Hours" ColumnName="ClassHrsPerWeek_Hours" />
+                <ScalarProperty Name="ClassHrsPerWeek_Minutes" ColumnName="ClassHrsPerWeek_Minutes" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NumOfCredits" ColumnName="NumOfCredits" />
+                <ScalarProperty Name="FormattedSelfStudyTime" ColumnName="FormattedSelfStudyTime" />
+                <ScalarProperty Name="FormattedClassHours" ColumnName="FormattedClassHours" />
+                <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SelfStudyHours">
+            <EntityTypeMapping TypeName="PROG_POE_DatabaseModel.SelfStudyHour">
+              <MappingFragment StoreEntitySet="SelfStudyHours">
+                <ScalarProperty Name="SelfStudyID" ColumnName="SelfStudyID" />
+                <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semesters">
+            <EntityTypeMapping TypeName="PROG_POE_DatabaseModel.Semester">
+              <MappingFragment StoreEntitySet="Semesters">
+                <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
+                <ScalarProperty Name="NumOfWeeks" ColumnName="NumOfWeeks" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="PROG_POE_DatabaseModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Studies">
+            <EntityTypeMapping TypeName="PROG_POE_DatabaseModel.Study">
+              <MappingFragment StoreEntitySet="Study">
+                <ScalarProperty Name="StudyID" ColumnName="StudyID" />
+                <ScalarProperty Name="DayWorked" ColumnName="DayWorked" />
+                <ScalarProperty Name="WeekWorked" ColumnName="WeekWorked" />
+                <ScalarProperty Name="TimeWorked_Hours" ColumnName="TimeWorked_Hours" />
+                <ScalarProperty Name="TimeWorked_Minutes" ColumnName="TimeWorked_Minutes" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

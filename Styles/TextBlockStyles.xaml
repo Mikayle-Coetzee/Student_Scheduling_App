@@ -1,0 +1,49 @@
+﻿<!--Documentation Header
+    File: TextBlockStyles.xaml
+    Author: Mikayle Coetzee (ST10023767)
+    Course: PROG6212 POE 2023
+    Part: 1
+    Description: This XAML resource dictionary defines styles for TextBlocks used in the application's user 
+                 interface, including both dark and light themes -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region TextBlock Styles -->
+    <!--Textblock style dark-->
+    <Style x:Key="btnTextBlockStyleDark" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource btnTextColorDark}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Style.Triggers>
+            <!--Text Style on hover-->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource TriggerOverColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Textblock style light-->
+    <Style x:Key="btnTextBlockStyleLight" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource btnTextColorLight}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Style.Triggers>
+            <!--Text Style on hover-->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource TriggerOverColor}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+</ResourceDictionary>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->

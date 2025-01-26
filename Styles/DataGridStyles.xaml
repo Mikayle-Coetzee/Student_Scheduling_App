@@ -1,0 +1,46 @@
+﻿<!--Documentation Header
+    File: DataGridStyle.xaml
+    Author: Mikayle Coetzee (ST10023767)
+    Course: PROG6212 POE 2023
+    Part: 1
+    Description: This XAML resource dictionary defines dataGrid styles and UI styles for the application -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Data Grid Column Header Style-->
+    <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{DynamicResource gridBackgroundColorDark}" />
+        <Setter Property="Foreground" Value="{DynamicResource titleColorLight}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource borderBrushDark}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <!--#endregion-->
+    
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Data Grid Style -->
+    <Style x:Key="DataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource borderBrushDark}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource plainTextColorDark}" />
+        <Setter Property="RowHeaderWidth" Value="0" />
+        <Setter Property="RowBackground" Value="Transparent" />
+        <Setter Property="CanUserAddRows" Value="False" />
+        <Setter Property="CanUserDeleteRows" Value="False" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+    </Style>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+</ResourceDictionary>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->

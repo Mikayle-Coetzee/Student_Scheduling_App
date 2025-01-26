@@ -1,0 +1,99 @@
+﻿<!--Documentation Header
+    File: LabelStyles.xaml
+    Author: Mikayle Coetzee (ST10023767)
+    Course: PROG6212 POE 2023
+    Part: 1
+    Description: This XAML resource dictionary defines various styles for labels used in the application's user 
+                 interface, including title labels, plain labels, and guidance labels -->
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Title Label Styles -->
+    <!--Title label style light-->
+    <Style x:Key="TitleLabelStyleLight" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Width" Value="320" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Foreground" Value="{DynamicResource titleColorLight}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!--Title label style dark-->
+    <Style x:Key="TitleLabelStyleDark" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="48" />
+        <Setter Property="Width" Value="320" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Foreground" Value="{DynamicResource titleColorDark}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <!--#endregion-->
+    
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Plain Label Styles -->
+    <!--Plain label style light-->
+    <Style x:Key="PlainLabelStyleLight" TargetType="Label">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="320" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Foreground" Value="{DynamicResource plainTextColorLight}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="FontStyle" Value="Italic" />
+    </Style>
+
+    <!--Plain label style dark-->
+    <Style x:Key="PlainLabelStyleDark" TargetType="Label">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="320" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Foreground" Value="{DynamicResource plainTextColorDark}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="FontStyle" Value="Italic" />
+    </Style>
+    <!--#endregion-->
+
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+
+    <!--#region Guidance Label Styles -->
+    <!--Guidance label style dark-->
+    <Style x:Key="GuidanceLabelStyleDark" TargetType="Label">
+        <Setter Property="Height" Value="30" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="{DynamicResource plainTextColorDark}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Canvas.Top" Value="42" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+    </Style>
+
+    <!--Guidance label style light-->
+    <Style x:Key="GuidanceLabelStyleLight" TargetType="Label">
+        <Setter Property="Height" Value="30" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="{DynamicResource plainTextColorLight}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Canvas.Top" Value="42" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+    </Style>
+    <!--#endregion-->
+    
+    <!--・♫ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ♫・-->
+</ResourceDictionary>
+<!--★- -♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫- -★・。。END OF FILE 。。・★- -♫ ♬:;;;:♬ ♫:;;;: ♫ ♬:;;;:♬ ♫:;;;: ♫- -★-->
